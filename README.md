@@ -1,17 +1,17 @@
-# GPG y SSH
+# GPG and SSH
 
-Este repositorio es para aquellos que quieren que sus commits salgan verified. 
+This repository is for those who want their commits to be verified.
 
-Podras configurarlo con facilidad si sigues los siguientes pasos...
+You can configure it easily if you follow the following steps...
 
-## Configuracion Basica Git
+## Basic Git Configuration
 
 ```bash
 git config --global user.name "Your Name"
 ```
 
 ```bash
-git config --global user.email name@correo.com
+git config --global user.email name@mail.com
 ```
 
 ```bash
@@ -22,74 +22,73 @@ git config --global core.editor "code --wait"
 git config --global core.autocrlf input
 ```
 
-## Configurar SSH
-### Generar SSH
+## Configure SSH
+### Generate SSH
 
 ```bash
 ssh-keygen -t rsa -b 4096 -C "name@correo.com"
 ```
-### Optener Codigo
+### Get Code
 ```bash
 cat ~/.ssh/id_rsa.pub
 ```
 
-### Ir a configurar a github copiando el codigo
+### Go configure github by copying the code
 
-### Testear conexion
+### Test connection
 ```bash
 ssh -T git@github.com
 ```
 
-## Configurar GPG
+## Configure GPG
 
-### Generar GPG Key
+### Generate GPG Key
 ```bash
 gpg --full-generate-key
 ```
 
-### Obtener ID
+### Get ID
 
 ```bash
 gpg --list-secret-keys --keyid-format=long
 ```
 
-Copia el codigo que esta despues del slash en la seccion de sec
+Copy the code that is after the slash in the sec section
 
-Ejemplo
+Example
 
-3AA5C34371567BD2 
+3AA5C34371567BD2
 
-### Obtener Llave para github
+### Get Key for github
 
 ```bash
 gpg --armor --export 3AA5C34371567BD2
 ```
 
-### Configurar llave en github
+### Configure key on github
 
 
-## Decirle a git que firme tus commits con gpg
+## Tell git to sign your commits with gpg
 
-### Git utilice gpg
+### Git use gpg
 ```bash
 git config --global --unset gpg.format
 ```
 
-### obtener ID gpg 
+### get gpg ID
 ```bash
 gpg --list-secret-keys --keyid-format=long
 
 ```
 
-### Configurar clave para git
+### Set key for git
 
 ```bash
 git config --global user.signingkey 3AA5C34371567BD2
 
 ```
 
-### Firmar commits con gpg
+### Sign commits with gpg
 ```bash
 git config --global commit.gpgsign true
 ```
-
